@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVAH - Supporting Women Against Violence</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.9) 0%, rgba(249, 250, 251, 0.9) 100%), url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.8) 0%, rgba(249, 250, 251, 0.8) 100%), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.15);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ec4899;
+        }
+        
+        .nav-link.active {
+            color: #ec4899;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ec4899;
+        }
+        
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        
+        .btn-tertiary {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+        
+        .btn-quaternary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .btn-quinary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 60px;  /* Augmenté de 40px à 60px */
+            height: 60px; /* Augmenté de 40px à 60px */
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .section-bg {
+            background: linear-gradient(135deg, rgba(253, 242, 248, 0.7) 0%, rgba(249, 250, 251, 0.7) 100%);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full gradient-bg font-sans">
+  <div class="min-h-full flex flex-col"><!-- Header -->
+   <header class="py-4 px-4 bg-white shadow-sm bg-opacity-90 backdrop-blur-sm">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center">
+     <div class="logo-container">
+      <img id="organization-logo" src="images/logoeng.png" alt="EVAH Logo" class="logo">
+      <div class="text-2xl font-bold" id="organization-name" style="color: #1f2937;">
+       EVAH
+      </div>
+     </div>
+     <div class="hidden md:flex space-x-8"><a href="#" class="nav-link active" data-page="home" style="color: #374151;">Home</a> <a href="#" class="nav-link" data-page="about" style="color: #374151;">About Us</a> <a href="#" class="nav-link" data-page="work" style="color: #374151;">Our Work</a> <a href="#" class="nav-link" data-page="involved" style="color: #374151;">Get Involved</a> <a href="#" class="nav-link" data-page="contact" style="color: #374151;">Contact</a>
+     </div>
+     <div class="md:hidden"><button id="mobile-menu-btn" class="p-2">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </nav>
+   </header><!-- Mobile Menu -->
+   <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-95 backdrop-blur-sm shadow-lg">
+    <div class="px-4 py-2 space-y-2"><a href="#" class="block py-2 nav-link active" data-page="home">Home</a> <a href="#" class="block py-2 nav-link" data-page="about">About Us</a> <a href="#" class="block py-2 nav-link" data-page="work">Our Work</a> <a href="#" class="block py-2 nav-link" data-page="involved">Get Involved</a> <a href="#" class="block py-2 nav-link" data-page="contact">Contact</a>
+    </div>
+   </div><!-- Main Content -->
+   <main class="flex-1"><!-- Home Page -->
+    <div id="home-page" class="page-content active"><!-- Hero Section -->
+     <section class="py-20 px-4 hero-bg">
+      <div class="max-w-4xl mx-auto text-center">
+       <h1 class="text-5xl md:text-6xl font-bold mb-6" id="main-title" style="color: #1f2937;">Empowering Women Against Violence</h1>
+       <p class="text-xl md:text-2xl mb-4" id="hero-subtitle" style="color: #ec4899;">Supporting survivors and promoting gender equality in Tunisia</p>
+       <p class="text-lg mb-8 max-w-2xl mx-auto leading-relaxed" id="hero-description" style="color: #6b7280;">We are a group of dedicated students working to create a safer world for women through awareness campaigns, empowerment programs, and community support.</p><button id="cta-button" class="btn-primary hover-lift px-8 py-4 text-lg font-semibold rounded-full text-white"> Get Involved </button>
+      </div>
+     </section><!-- Services Section -->
+     <section class="py-16 px-4 section-bg">
+      <div class="max-w-6xl mx-auto">
+       <h2 class="text-4xl font-bold text-center mb-12" id="services-title" style="color: #1f2937;">How We Help</h2>
+       <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-8 rounded-2xl card-shadow hover-lift bg-white bg-opacity-80 backdrop-blur-sm">
+         <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background-color: #ec4899;">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold mb-3" id="awareness-title" style="color: #1f2937;">Awareness Campaigns</h3>
+         <p id="awareness-description" style="color: #6b7280;">Educational initiatives to raise awareness about gender-based violence and promote prevention in universities and communities.</p>
+        </div>
+        <div class="text-center p-8 rounded-2xl card-shadow hover-lift bg-white bg-opacity-80 backdrop-blur-sm">
+         <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background-color: #ec4899;">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold mb-3" id="empowerment-title" style="color: #1f2937;">Empowerment Programs</h3>
+         <p id="empowerment-description" style="color: #6b7280;">Skills development and confidence-building workshops to help women become independent and self-reliant.</p>
+        </div>
+        <div class="text-center p-8 rounded-2xl card-shadow hover-lift bg-white bg-opacity-80 backdrop-blur-sm">
+         <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style="background-color: #ec4899;">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+         </div>
+         <h3 class="text-xl font-bold mb-3" id="therapy-title" style="color: #1f2937;">Therapy &amp; Support</h3>
+         <p id="therapy-description" style="color: #6b7280;">Professional counseling and emotional support services for survivors of violence in a safe, confidential environment.</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- About Us Page -->
+    <div id="about-page" class="page-content">
+     <section class="py-20 px-4 section-bg">
+      <div class="max-w-4xl mx-auto">
+       <h1 class="text-5xl font-bold mb-8 text-center" style="color: #1f2937;">About EVAH</h1>
+       <div class="prose prose-lg mx-auto" style="color: #6b7280;">
+        <p class="text-xl mb-6">EVAH is a student-led organization dedicated to supporting women who face physical violence in Tunisia. We believe in creating a world where every woman feels safe, empowered, and valued.</p>
+        <p class="mb-6">Our mission is to provide comprehensive support through education, empowerment, and direct assistance to survivors of gender-based violence.</p>
+        <div class="text-center mt-12"><button class="btn-secondary hover-lift px-8 py-4 text-lg font-semibold rounded-full text-white"> Learn More About Our Mission </button>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Our Work Page -->
+    <div id="work-page" class="page-content">
+     <section class="py-20 px-4 section-bg">
+      <div class="max-w-6xl mx-auto">
+       <h1 class="text-5xl font-bold mb-12 text-center" style="color: #1f2937;">Our Work</h1>
+       <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+         <div class="p-6 rounded-xl bg-white bg-opacity-80 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">University Programs</h3>
+          <p style="color: #6b7280;">On-campus workshops, awareness sessions, and support groups for students.</p>
+         </div>
+         <div class="p-6 rounded-xl bg-white bg-opacity-80 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">Community Outreach</h3>
+          <p style="color: #6b7280;">Extending our support to local communities through partnerships and events.</p>
+         </div>
+        </div>
+        <div class="space-y-8">
+         <div class="p-6 rounded-xl bg-white bg-opacity-80 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">Online Support</h3>
+          <p style="color: #6b7280;">Digital resources, virtual counseling, and online safety tools.</p>
+         </div>
+         <div class="p-6 rounded-xl bg-white bg-opacity-80 backdrop-blur-sm">
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">Donation Programs</h3>
+          <p style="color: #6b7280;">Fundraising initiatives to support survivors and expand our services.</p>
+         </div>
+        </div>
+       </div>
+       <div class="text-center mt-12"><button class="btn-tertiary hover-lift px-8 py-4 text-lg font-semibold rounded-full text-white"> View Our Impact </button>
+       </div>
+      </div>
+     </section>
+    </div><!-- Get Involved Page -->
+    <div id="involved-page" class="page-content">
+     <section class="py-20 px-4 section-bg">
+      <div class="max-w-4xl mx-auto">
+       <h1 class="text-5xl font-bold mb-12 text-center" style="color: #1f2937;">Get Involved</h1>
+       <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl card-shadow bg-white bg-opacity-80 backdrop-blur-sm">
+         <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">Volunteer</h3>
+         <p class="mb-6" style="color: #6b7280;">Join our team of dedicated volunteers and make a direct impact in supporting survivors.</p><button class="btn-quaternary px-6 py-3 rounded-full text-white font-semibold"> Become a Volunteer </button>
+        </div>
+        <div class="p-8 rounded-xl card-shadow bg-white bg-opacity-80 backdrop-blur-sm">
+         <h3 class="text-2xl font-bold mb-4" style="color: #1f2937;">Donate</h3>
+         <p class="mb-6" style="color: #6b7280;">Your financial support helps us expand our services and reach more women in need.</p><button class="btn-quinary px-6 py-3 rounded-full text-white font-semibold"> Make a Donation </button>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div><!-- Contact Page -->
+    <div id="contact-page" class="page-content">
+     <section class="py-20 px-4 section-bg">
+      <div class="max-w-4xl mx-auto">
+       <h1 class="text-5xl font-bold mb-12 text-center" style="color: #1f2937;">Contact Us</h1>
+       <div class="grid md:grid-cols-2 gap-12">
+        <div>
+         <h3 class="text-2xl font-bold mb-6" style="color: #1f2937;">Get in Touch</h3>
+         <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+           <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ec4899;">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+           </div><span style="color: #6b7280;">contact@evah-tunisia.org</span>
+          </div>
+          <div class="flex items-center space-x-3">
+           <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ec4899;">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+           </div><span style="color: #6b7280;">Tunisia Universities</span>
+          </div>
+         </div>
+        </div>
+        <div class="p-8 rounded-xl bg-white bg-opacity-80 backdrop-blur-sm">
+         <h3 class="text-xl font-bold mb-4" style="color: #1f2937;">Emergency Support</h3>
+         <p class="mb-4" style="color: #6b7280;">If you or someone you know needs immediate help, please reach out to us or contact local emergency services.</p>
+         <p class="text-sm" style="color: #ec4899;">Available 24/7 for crisis support</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </main><!-- Footer -->
+   <footer class="py-8 px-4 bg-white bg-opacity-90 backdrop-blur-sm border-t">
+    <div class="max-w-6xl mx-auto text-center">
+     <p id="footer-text" style="color: #6b7280;">© 2025 EVAH. All rights reserved. Supporting women against violence in Tunisia.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            organization_name: "EVAH",
+            organization_logo: "images/logo%20eng.png",
+            main_title: "Empowering Women Against Violence",
+            hero_subtitle: "Supporting survivors and promoting gender equality in Tunisia",
+            hero_description: "We are a group of dedicated students working to create a safer world for women through awareness campaigns, empowerment programs, and community support.",
+            cta_button_text: "Get Involved",
+            services_title: "How We Help",
+            awareness_title: "Awareness Campaigns",
+            awareness_description: "Educational initiatives to raise awareness about gender-based violence and promote prevention in universities and communities.",
+            empowerment_title: "Empowerment Programs",
+            empowerment_description: "Skills development and confidence-building workshops to help women become independent and self-reliant.",
+            therapy_title: "Therapy & Support",
+            therapy_description: "Professional counseling and emotional support services for survivors of violence in a safe, confidential environment.",
+            footer_text: "© 2025 EVAH. All rights reserved. Supporting women against violence in Tunisia.",
+            background_color: "#fdf2f8",
+            surface_color: "#ffffff",
+            text_color: "#1f2937",
+            primary_action_color: "#ec4899",
+            secondary_color: "#6b7280",
+            font_family: "Inter",
+            font_size: 16,
+            background_image: "images/background.jpg",
+            hero_background_image: "images/hero-bg.jfif"
+        };
+
+        async function onConfigChange(config) {
+            // Update text content
+            document.getElementById('organization-name').textContent = config.organization_name || defaultConfig.organization_name;
+            document.getElementById('organization-logo').src = config.organization_logo || defaultConfig.organization_logo;
+            document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+            document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            document.getElementById('hero-description').textContent = config.hero_description || defaultConfig.hero_description;
+            document.getElementById('cta-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+            document.getElementById('services-title').textContent = config.services_title || defaultConfig.services_title;
+            document.getElementById('awareness-title').textContent = config.awareness_title || defaultConfig.awareness_title;
+            document.getElementById('awareness-description').textContent = config.awareness_description || defaultConfig.awareness_description;
+            document.getElementById('empowerment-title').textContent = config.empowerment_title || defaultConfig.empowerment_title;
+            document.getElementById('empowerment-description').textContent = config.empowerment_description || defaultConfig.empowerment_description;
+            document.getElementById('therapy-title').textContent = config.therapy_title || defaultConfig.therapy_title;
+            document.getElementById('therapy-description').textContent = config.therapy_description || defaultConfig.therapy_description;
+            document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+
+            // Update background images
+            const backgroundImage = config.background_image || defaultConfig.background_image;
+            const heroBackgroundImage = config.hero_background_image || defaultConfig.hero_background_image;
+            
+            document.body.style.background = `linear-gradient(135deg, rgba(253, 242, 248, 0.9) 0%, rgba(249, 250, 251, 0.9) 100%), url('${backgroundImage}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundAttachment = 'fixed';
+            
+            const heroSection = document.querySelector('.hero-bg');
+            if (heroSection) {
+                heroSection.style.background = `linear-gradient(135deg, rgba(253, 242, 248, 0.8) 0%, rgba(249, 250, 251, 0.8) 100%), url('${heroBackgroundImage}')`;
+                heroSection.style.backgroundSize = 'cover';
+                heroSection.style.backgroundPosition = 'center';
+            }
+
+            // Update colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+
+            // Update text colors
+            const headingElements = document.querySelectorAll('h1, h2, h3, #organization-name');
+            headingElements.forEach(el => el.style.color = textColor);
+            
+            const secondaryTextElements = document.querySelectorAll('p:not(#hero-subtitle), #footer-text');
+            secondaryTextElements.forEach(el => el.style.color = secondaryColor);
+            
+            document.getElementById('hero-subtitle').style.color = primaryActionColor;
+            
+            // Update icon backgrounds
+            const iconBgs = document.querySelectorAll('.w-16.h-16, .w-10.h-10, .w-8.h-8');
+            iconBgs.forEach(bg => bg.style.backgroundColor = primaryActionColor);
+            
+            // Update card backgrounds
+            const cards = document.querySelectorAll('.bg-white.bg-opacity-80');
+            cards.forEach(card => {
+                card.style.backgroundColor = backgroundColor;
+                card.style.opacity = '0.8';
+            });
+
+            // Update fonts
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
+            const fontStack = `${fontFamily}, Inter, system-ui, -apple-system, sans-serif`;
+            document.body.style.fontFamily = fontStack;
+            
+            // Update font sizes proportionally
+            document.getElementById('main-title').style.fontSize = `${fontSize * 3}px`;
+            document.getElementById('hero-subtitle').style.fontSize = `${fontSize * 1.25}px`;
+            document.getElementById('hero-description').style.fontSize = `${fontSize * 1.125}px`;
+            document.getElementById('services-title').style.fontSize = `${fontSize * 2.5}px`;
+            
+            const serviceHeadings = document.querySelectorAll('#awareness-title, #empowerment-title, #therapy-title');
+            serviceHeadings.forEach(h => h.style.fontSize = `${fontSize * 1.25}px`);
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.secondary_color || defaultConfig.secondary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (value) => {
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["organization_name", config.organization_name || defaultConfig.organization_name],
+                ["organization_logo", config.organization_logo || defaultConfig.organization_logo],
+                ["main_title", config.main_title || defaultConfig.main_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["hero_description", config.hero_description || defaultConfig.hero_description],
+                ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text],
+                ["services_title", config.services_title || defaultConfig.services_title],
+                ["awareness_title", config.awareness_title || defaultConfig.awareness_title],
+                ["awareness_description", config.awareness_description || defaultConfig.awareness_description],
+                ["empowerment_title", config.empowerment_title || defaultConfig.empowerment_title],
+                ["empowerment_description", config.empowerment_description || defaultConfig.empowerment_description],
+                ["therapy_title", config.therapy_title || defaultConfig.therapy_title],
+                ["therapy_description", config.therapy_description || defaultConfig.therapy_description],
+                ["footer_text", config.footer_text || defaultConfig.footer_text],
+                ["background_image", config.background_image || defaultConfig.background_image],
+                ["hero_background_image", config.hero_background_image || defaultConfig.hero_background_image]
+            ]);
+        }
+
+        // Initialize SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-content');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show target page
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(targetPage + '-page').classList.add('active');
+                
+                // Close mobile menu
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Button interactions
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                e.target.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 150);
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99a7948452225bcd',t:'MTc2MjQ2MzQ1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
